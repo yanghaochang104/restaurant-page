@@ -1,33 +1,25 @@
 
-			// set up google map
-			var map;
+$(document).ready(function(){
+	$('.scrollTo').on("click", function(){
+		let content = $(this).text().toLowerCase();
 
-			function initMap() {
-			var locat = {lat:25.044415, lng:121.513821};
-
-			map = new google.maps.Map(document.getElementById('map'), {
-			center: locat,
-			zoom: 18
-			});
-
-			var marker = new google.maps.Marker({
-			position: locat,
-			map: map,
-			title:'Restaurant Dionysus'
-			});
-
-			marker.setMap(map);
-
-			var contentString = "<h1>Restaurant Dionysus</h1>";
-
-			var infowindow = new google.maps.InfoWindow({
-				content: contentString
-			});
-
-			infowindow.open(map, marker);
-			marker.addListener('click', function(){
-				infowindow.open(map, marker);
-			});
-
-			}
-			
+		$('html, body').animate({
+			scrollTop:$('#'+content).offset().top-80
+		}, 800);
+		let mode = $('.navbar-toggler');
+		
+		mode.click();
+	});
+	
+	$('.scrollStart').on("click", function(){
+		$('html, body').animate({
+			scrollTop:0
+		},800);
+	});
+	
+	$(".js-rotating").Morphext({
+	    animation: "bounceIn",
+	    separator: ",",
+	    speed: 3000
+	});
+});
